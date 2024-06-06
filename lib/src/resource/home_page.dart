@@ -3,6 +3,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:testflutter/src/model/place_item_res.dart';
 import 'package:testflutter/src/model/step_res.dart';
 import 'package:testflutter/src/repository/place_service.dart';
+import 'package:testflutter/src/resource/widget/car_pickup.dart';
 import 'package:testflutter/src/resource/widget/home_menu.dart';
 import 'package:testflutter/src/resource/widget/ride_picker.dart';
 
@@ -16,6 +17,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
   final Map<String, Marker> _markers = <String, Marker>{};
+  var _tripDistance = 0;
   Set<Polyline> _polylines = {};
 
   late GoogleMapController _mapController;
@@ -70,6 +72,13 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
             ),
+            Positioned(
+              left: 20,
+              right: 20,
+              bottom: 40,
+              height: 248,
+              child: CarPickup(_tripDistance),
+            )
           ],
         ),
       ),

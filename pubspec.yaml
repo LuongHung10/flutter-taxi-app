@@ -67,27 +67,27 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/ic_car_red.png
-    - assets/ic_car_green.png
-    - assets/ic_user.png
-    - assets/ic_lock.png
-    - assets/ic_mail.png
-    - assets/ic_phone.png
-    - assets/ic_location_black.png
-    - assets/ic_map_nav.png
-    - assets/ic_notify.png
-    - assets/ic_remove_x.png
-    - assets/ic_menu.png
-    - assets/ic_menu_help.png
-    - assets/ic_menu_history.png
-    - assets/ic_menu_logout.png
-    - assets/ic_menu_notify.png
-    - assets/ic_menu_percent.png
-    - assets/ic_menu_user.png
-    - assets/ic_pickup_hatchback.png
-    - assets/ic_pickup_sedan.png
-    - assets/ic_pickup_suv.png
-    - assets/ic_pickup_van.png
+    - ./assets/ic_car_red.png
+    - ./assets/ic_car_green.png
+    - ./assets/ic_user.png
+    - ./assets/ic_lock.png
+    - ./assets/ic_mail.png
+    - ./assets/ic_phone.png
+    - ./assets/ic_location_black.png
+    - ./assets/ic_map_nav.png
+    - ./assets/ic_notify.png
+    - ./assets/ic_remove_x.png
+    - ./assets/ic_menu.png
+    - ./assets/ic_menu_help.png
+    - ./assets/ic_menu_history.png
+    - ./assets/ic_menu_logout.png
+    - ./assets/ic_menu_notify.png
+    - ./assets/ic_menu_percent.png
+    - ./assets/ic_menu_user.png
+    - ./assets/ic_pickup_hatchback.png
+    - ./assets/ic_pickup_sedan.png
+    - ./assets/ic_pickup_suv.png
+    - ./assets/ic_pickup_van.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

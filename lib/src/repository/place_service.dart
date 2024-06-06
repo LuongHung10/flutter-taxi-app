@@ -8,65 +8,54 @@ import 'package:testflutter/src/model/trip_info_res.dart';
 class PlaceService {
   static Future<List<PlaceItemRes>> searchPlace(String keyword) async {
     String url =
-        "${"https://maps.googleapis.com/maps/api/place/textsearch/json?key=${Configs.ggKEY2}"}&language=vi&region=VN&query=${Uri.encodeQueryComponent(keyword)}";
+        "https://maps.googleapis.com/maps/api/place/textsearch/json?key=AIzaSyBd5wAV2bW2aPLfc1_edSyueI75eSBz9s4&language=vi&region=VN&query=${Uri.encodeQueryComponent(keyword)}";
 
     print("search >>: $url");
     var res = await http.get(Uri.parse(url));
+    print("Response status: ${res.statusCode}");
+    print("Response body: ${res.body}");
+
     if (res.statusCode == 200) {
-      return PlaceItemRes.fromJson(json.decode(res.body));
+      var jsonResponse = json.decode(res.body) as Map<String, dynamic>;
+      return PlaceItemRes.fromJsonList(jsonResponse);
     } else {
-      return [];
+      throw Exception("Failed to load places");
     }
   }
 
-  static Future<dynamic> getStep(
+  static Future<TripInfoRes> getStep(
       double lat, double lng, double tolat, double tolng) async {
     String strOrigin = "origin=$lat,$lng";
-    // Destination of route
     String strDest = "destination=$tolat,$tolng";
-    // Sensor enabled
     String sensor = "sensor=false";
     String mode = "mode=driving";
-    // Building the parameters to the web service
     String parameters = "$strOrigin&$strDest&$sensor&$mode";
-    // Output format
     String output = "json";
-    // Building the url to the web service
     String url =
         "https://maps.googleapis.com/maps/api/directions/$output?$parameters&key=${Configs.ggKEY2}";
 
     print(url);
-    final JsonDecoder _decoder = new JsonDecoder();
-    return http.get(url as Uri).then((http.Response response) {
-      String res = response.body;
-      int statusCode = response.statusCode;
-//      print("API Response: " + res);
-      if (statusCode < 200 || statusCode > 400 || json == null) {
-        res =
-            "{\"status\":$statusCode,\"message\":\"error\",\"response\":$res}";
-        throw new Exception(res);
-      }
+    var response = await http.get(Uri.parse(url));
+    print("Response status: ${response.statusCode}");
+    print("Response body: ${response.body}");
 
-      TripInfoRes tripInfoRes;
+    if (response.statusCode == 200) {
+      var jsonResponse = json.decode(response.body);
       try {
-        var json = _decoder.convert(res);
-        int distance = json["routes"][0]["legs"][0]["distance"]["value"];
+        int distance =
+            jsonResponse["routes"][0]["legs"][0]["distance"]["value"];
         List<StepsRes> steps =
-            _parseSteps(json["routes"][0]["legs"][0]["steps"]);
-
-        tripInfoRes = TripInfoRes(distance, steps);
+            _parseSteps(jsonResponse["routes"][0]["legs"][0]["steps"]);
+        return TripInfoRes(distance, steps);
       } catch (e) {
-        throw Exception(res);
+        throw Exception("Failed to parse steps");
       }
-
-      return tripInfoRes;
-    });
+    } else {
+      throw Exception("Failed to load directions");
+    }
   }
 
-  static List<StepsRes> _parseSteps(final responseBody) {
-    var list =
-        responseBody.map<StepsRes>((json) => StepsRes.fromJson(json)).toList();
-
-    return list;
+  static List<StepsRes> _parseSteps(List<dynamic> stepsJson) {
+    return stepsJson.map<StepsRes>((json) => StepsRes.fromJson(json)).toList();
   }
 }

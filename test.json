@@ -1,0 +1,124 @@
+"html_attributions": [],
+"result": {
+    "formatted_address": "1600 Amphitheatre Parkway, Mountain View, CA 94043, USA",
+    "geometry": {
+        "location": {
+            "lat": 37.4224764,
+            "lng": -122.0842499
+        }
+    },
+    "name": "Googleplex"
+},
+"status": "OK"
+//////////
+{
+    "geocoded_waypoints": [
+        {
+            "geocoder_status": "OK",
+            "place_id": "ChIJd8BlQ2BZwokRAFUEcm_qrcA",
+            "types": [
+                "locality",
+                "political"
+            ]
+        },
+        {
+            "geocoder_status": "OK",
+            "place_id": "ChIJOwg_06VPwokRYv534QaPC8g",
+            "types": [
+                "locality",
+                "political"
+            ]
+        }
+    ],
+    "routes": [
+        {
+            "bounds": {
+                "northeast": {
+                    "lat": 40.7127753,
+                    "lng": -74.0059728
+                },
+                "southwest": {
+                    "lat": 34.0522342,
+                    "lng": -118.2436849
+                }
+            },
+            "legs": [
+                {
+                    "distance": {
+                        "text": "2,448 mi",
+                        "value": 3937887
+                    },
+                    "duration": {
+                        "text": "1 day 12 hours",
+                        "value": 133200
+                    },
+                    "end_address": "Los Angeles, CA, USA",
+                    "end_location": {
+                        "lat": 34.0522342,
+                        "lng": -118.2436849
+                    },
+                    "start_address": "New York, NY, USA",
+                    "start_location": {
+                        "lat": 40.7127753,
+                        "lng": -74.0059728
+                    },
+                    "steps": [
+                        {
+                            "distance": {
+                                "text": "0.5 mi",
+                                "value": 800
+                            },
+                            "duration": {
+                                "text": "2 mins",
+                                "value": 120
+                            },
+                            "end_location": {
+                                "lat": 40.715,
+                                "lng": -74.002
+                            },
+                            "html_instructions": "Head <b>north</b> on Broadway",
+                            "polyline": {
+                                "points": "a~l~Fjk~uOwHJy@P"
+                            },
+                            "start_location": {
+                                "lat": 40.7127753,
+                                "lng": -74.0059728
+                            },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": {
+                                "text": "2,447 mi",
+                                "value": 3937887
+                            },
+                            "duration": {
+                                "text": "1 day 12 hours",
+                                "value": 133080
+                            },
+                            "end_location": {
+                                "lat": 34.0522342,
+                                "lng": -118.2436849
+                            },
+                            "html_instructions": "Merge onto I-80 W",
+                            "polyline": {
+                                "points": "c`i~Fj~`uOxD`Q|@bD"
+                            },
+                            "start_location": {
+                                "lat": 40.715,
+                                "lng": -74.002
+                            },
+                            "travel_mode": "DRIVING"
+                        }
+                    ]
+                }
+            ],
+            "overview_polyline": {
+                "points": "a~l~Fjk~uOwHJy@P|D`Q|@bD"
+            },
+            "summary": "I-80 W",
+            "warnings": [],
+            "waypoint_order": []
+        }
+    ],
+    "status": "OK"
+}

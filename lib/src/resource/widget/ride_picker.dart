@@ -83,7 +83,16 @@ class _RidePickerState extends State<RidePicker> {
             width: double.infinity,
             height: 50,
             child: TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) =>
+                        RidePickerPage(toAddress == null ? "" : toAddress!.name,
+                            (place, isFrom) {
+                          widget.onSelected(place, isFrom);
+                          toAddress = place;
+                          setState(() {});
+                        }, false)));
+              },
               child: SizedBox(
                 width: double.infinity,
                 height: double.infinity,
